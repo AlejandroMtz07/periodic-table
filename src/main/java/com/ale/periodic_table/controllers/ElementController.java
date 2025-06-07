@@ -2,7 +2,6 @@ package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Element;
 import com.ale.periodic_table.services.ElementsService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +42,7 @@ public class ElementController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/atomic/{number}")
+    @GetMapping("/atomic/number/{number}")
     public ResponseEntity<Optional<Element>> getByAtomic(@PathVariable int number){
         Optional<Element> element = service.findByAtomicNumber(number);
         if(element.isPresent()){
@@ -52,4 +51,21 @@ public class ElementController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/atomic/mass/{mass}")
+    public ResponseEntity<Optional<Element>> getByAtomicMass(@PathVariable double mass){
+        Optional<Element> element = service.findByAtomicMass(mass);
+        if(element.isPresent()){
+            return ResponseEntity.ok(element);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/group/{group}")
+    public ResponseEntity<List<Element>> getByGroup(@PathVariable String group){
+        List<Element> elements = service.findByGroup(group);
+        if(!elements.isEmpty()){
+            return ResponseEntity.ok(elements);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

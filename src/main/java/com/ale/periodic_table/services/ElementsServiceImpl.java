@@ -39,15 +39,17 @@ public class ElementsServiceImpl implements ElementsService{
         return repository.findByAtomicnumber(atomicNumber);
     }
 
+    //TODO
     @Transactional(readOnly = true)
     @Override
     public Optional<Element> findByAtomicMass(double mass) {
-        return Optional.empty();
+        return repository.findByAtomicmass(mass);
     }
 
+    //TODO
     @Transactional(readOnly = true)
     @Override
     public List<Element> findByGroup(String group) {
-        return List.of();
+        return repository.findByGroup(group);
     }
 }
