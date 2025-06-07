@@ -2,6 +2,7 @@ package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Element;
 import com.ale.periodic_table.services.ElementsService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +25,31 @@ public class ElementController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<Optional<Element>> get(@PathVariable String name){
-        return ResponseEntity.ok(service.findByName(name));
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Optional<Element>> getByName(@PathVariable String name){
+        Optional<Element> element = service.findByName(name);
+        if(element.isPresent()){
+            return ResponseEntity.ok(element);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/symbol/{symbol}")
+    public ResponseEntity<Optional<Element>> getBySymbol(@PathVariable String symbol){
+        Optional<Element> element = service.findBySymbol(symbol);
+        if(element.isPresent()){
+            return ResponseEntity.ok(element);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/atomic/{number}")
+    public ResponseEntity<Optional<Element>> getByAtomic(@PathVariable int number){
+        Optional<Element> element = service.findByAtomicNumber(number);
+        if(element.isPresent()){
+            return ResponseEntity.ok(element);
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }

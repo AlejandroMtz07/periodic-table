@@ -21,26 +21,31 @@ public class ElementsServiceImpl implements ElementsService{
         return (List<Element>) repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Element> findByName(String name) {
         return repository.findByName(name);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Element> findBySymbol(String symbol) {
-        return Optional.empty();
+        return repository.findBySymbol(symbol);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public Optional<Element> findByAtomicNumber(int id) {
-        return Optional.empty();
+    public Optional<Element> findByAtomicNumber(int atomicNumber) {
+        return repository.findByAtomicnumber(atomicNumber);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Element> findByAtomicMass(double mass) {
         return Optional.empty();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Element> findByGroup(String group) {
         return List.of();
