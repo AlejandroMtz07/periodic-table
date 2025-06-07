@@ -23,7 +23,7 @@ public class ElementsServiceImpl implements ElementsService{
 
     @Override
     public Optional<Element> findByName(String name) {
-        return Optional.empty();
+        return repository.findByName(name);
     }
 
     @Override
