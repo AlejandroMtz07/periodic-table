@@ -1,5 +1,7 @@
 package com.ale.periodic_table.entities;
 
+
+//TODO Implement this function
 public class ElementDTO {
 
     private String name;

@@ -1,6 +1,7 @@
 package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Element;
+import com.ale.periodic_table.exceptions.ElementNotFoundException;
 import com.ale.periodic_table.services.ElementsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,10 +37,10 @@ public class ElementController {
     @GetMapping("/symbol/{symbol}")
     public ResponseEntity<Element> getBySymbol(@PathVariable String symbol){
         Optional<Element> element = service.findBySymbol(symbol);
-        if(element.isPresent()){
-            return ResponseEntity.ok(element.orElseThrow());
+        if(element.isEmpty()){
+            throw new ElementNotFoundException();
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(element.orElseThrow());
     }
 
     @GetMapping("/atomic/number/{number}")

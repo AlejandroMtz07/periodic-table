@@ -1,6 +1,9 @@
 package com.ale.periodic_table.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name="elements")
@@ -8,11 +11,19 @@ public class Element {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotEmpty
     private String name;
+    @NotEmpty
+    @Size(min = 1, max = 2)
     private String symbol;
+    @NotEmpty
     private int atomicnumber;
+    @NotEmpty
     private double atomicmass;
+    @NotEmpty
     private String group;
+    @NotEmpty
     private String description;
 
     public int getId() {
