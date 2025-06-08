@@ -25,47 +25,43 @@ public class ElementController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Optional<Element>> getByName(@PathVariable String name){
+    public ResponseEntity<Element> getByName(@PathVariable String name){
         Optional<Element> element = service.findByName(name);
         if(element.isPresent()){
-            return ResponseEntity.ok(element);
+            return ResponseEntity.ok(element.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/symbol/{symbol}")
-    public ResponseEntity<Optional<Element>> getBySymbol(@PathVariable String symbol){
+    public ResponseEntity<Element> getBySymbol(@PathVariable String symbol){
         Optional<Element> element = service.findBySymbol(symbol);
         if(element.isPresent()){
-            return ResponseEntity.ok(element);
+            return ResponseEntity.ok(element.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/atomic/number/{number}")
-    public ResponseEntity<Optional<Element>> getByAtomic(@PathVariable int number){
+    public ResponseEntity<Element> getByAtomic(@PathVariable int number){
         Optional<Element> element = service.findByAtomicNumber(number);
         if(element.isPresent()){
-            return ResponseEntity.ok(element);
+            return ResponseEntity.ok(element.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/atomic/mass/{mass}")
-    public ResponseEntity<Optional<Element>> getByAtomicMass(@PathVariable double mass){
+    public ResponseEntity<Element> getByAtomicMass(@PathVariable double mass){
         Optional<Element> element = service.findByAtomicMass(mass);
         if(element.isPresent()){
-            return ResponseEntity.ok(element);
+            return ResponseEntity.ok(element.orElseThrow());
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/group/{group}")
     public ResponseEntity<List<Element>> getByGroup(@PathVariable String group){
-        List<Element> elements = service.findByGroup(group);
-        if(!elements.isEmpty()){
-            return ResponseEntity.ok(elements);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(service.findByGroup(group));
     }
 }
