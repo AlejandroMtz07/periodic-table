@@ -33,7 +33,7 @@ public class CompoundsServiceImpl implements CompoundsService {
     @Override
     @Transactional(readOnly = true)
     public List<Compound> getByType(String type) {
-        return (List<Compound>) repository.findByType(type);
+        return repository.findByType(type);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class CompoundsServiceImpl implements CompoundsService {
     @Override
     @Transactional(readOnly = true)
     public List<Compound> getCompoundsByState(String state) {
-        return (List<Compound>) repository.findByState(state);
+        return repository.findByState(state);
     }
 }
