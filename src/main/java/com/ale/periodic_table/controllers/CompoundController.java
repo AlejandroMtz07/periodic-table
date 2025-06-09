@@ -4,6 +4,7 @@ import com.ale.periodic_table.entities.Compound;
 import com.ale.periodic_table.exceptions.CompoundNotFoundException;
 import com.ale.periodic_table.exceptions.ElementNotFoundException;
 import com.ale.periodic_table.exceptions.StateNotFoundException;
+import com.ale.periodic_table.exceptions.TypeNotFoundException;
 import com.ale.periodic_table.services.CompoundsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,16 @@ public class CompoundController {
         }
         return ResponseEntity.ok(compound.get());
     }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Compound>> getByType(@PathVariable String type) {
+        List<Compound> compounds = service.getByType(type);
+        if(compounds.isEmpty()){
+            throw new TypeNotFoundException();
+        }
+        return ResponseEntity.ok(compounds);
+    }
+
     @GetMapping("/state/{state}")
     public ResponseEntity<List<Compound>> getByState(@PathVariable String state) {
         List<Compound> compounds = service.getCompoundsByState(state);
