@@ -17,7 +17,7 @@ public interface ElementsService {
     Optional<Element> findBySymbol(String symbol);
 
     //Get an element based on his atomic number
-    Optional<Element> findByAtomicNumber(int id);
+    Optional<Element> findByAtomicNumber(int atomicNumber);
 
     //Get an element based on his atomic mass
     Optional<Element> findByAtomicMass(double mass);
