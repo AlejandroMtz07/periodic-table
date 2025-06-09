@@ -2,7 +2,6 @@ package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Compound;
 import com.ale.periodic_table.exceptions.CompoundNotFoundException;
-import com.ale.periodic_table.exceptions.ElementNotFoundException;
 import com.ale.periodic_table.exceptions.StateNotFoundException;
 import com.ale.periodic_table.exceptions.TypeNotFoundException;
 import com.ale.periodic_table.services.CompoundsService;
