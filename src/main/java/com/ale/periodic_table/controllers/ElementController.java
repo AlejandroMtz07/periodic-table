@@ -46,7 +46,7 @@ public class ElementController {
     }
 
     @GetMapping("/atomic/number/{number}")
-    public ResponseEntity<Element> getByAtomic(@PathVariable int number) {
+    public ResponseEntity<Element> getByAtomicNumber(@PathVariable int number) {
         Optional<Element> element = service.findByAtomicNumber(number);
         if (element.isEmpty()) {
             throw new ElementNotFoundException();
