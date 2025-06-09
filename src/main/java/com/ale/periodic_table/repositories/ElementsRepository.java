@@ -8,10 +8,12 @@ import java.util.Optional;
 
 public interface ElementsRepository extends CrudRepository<Element, Integer> {
 
-    //Find an element by his name
+    //This interface implements Query Methods which translate a method name
+    //by convention into a SQL query
+
     Optional<Element> findByName(String name);
 
-    //Find an element by his symbol
+
     Optional<Element> findBySymbol(String symbol);
 
     Optional<Element> findByAtomicnumber(int atomicnumber);
@@ -20,6 +22,5 @@ public interface ElementsRepository extends CrudRepository<Element, Integer> {
 
     List<Element> findByGroup(String group);
 
-    //This interface inherits the necessary CRUD methods for the Periodic table API
 
 }

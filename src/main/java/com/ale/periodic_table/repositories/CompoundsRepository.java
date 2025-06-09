@@ -8,6 +8,9 @@ import java.util.Optional;
 
 public interface CompoundsRepository extends CrudRepository<Compound,Integer> {
 
+    //This interface implements Query Methods which translate a method name
+    //by convention into a SQL query
+
     //Get a compound by his name
     Optional<Compound> findByName(String name);
 
