@@ -7,12 +7,14 @@ import com.ale.periodic_table.services.ElementsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController("/")
+@RestController
+@RequestMapping("/elements")
 //TODO Add cross origin
 public class ElementController {
 
@@ -22,7 +24,7 @@ public class ElementController {
         this.service = service;
     }
 
-    @GetMapping("/elements")
+    @GetMapping("/")
     public ResponseEntity<List<Element>> list() {
         return ResponseEntity.ok(service.findAll());
     }

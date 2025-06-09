@@ -1,15 +1,13 @@
 package com.ale.periodic_table.entities;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
-import java.util.List;
-//@Entity
-//@Table(name = "compounds")
-public class Compounds {
+
+@Entity
+@Table(name = "compounds")
+public class Compound {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +22,9 @@ public class Compounds {
     @NotEmpty
     String state;
     @NotEmpty
-    double molecularMass;
+    double molecularmass;
     @NotEmpty
-    List<String> properties;
+    String properties;
 
     public int getId() {
         return id;
@@ -68,19 +66,19 @@ public class Compounds {
         this.state = state;
     }
 
-    public double getMolecularMass() {
-        return molecularMass;
+    public double getMolecularmass() {
+        return molecularmass;
     }
 
-    public void setMolecularMass(double molecularMass) {
-        this.molecularMass = molecularMass;
+    public void setMolecularmass(double molecularMass) {
+        this.molecularmass = molecularMass;
     }
 
-    public List<String> getProperties() {
+    public String getProperties() {
         return properties;
     }
 
-    public void setProperties(List<String> properties) {
+    public void setProperties(String properties) {
         this.properties = properties;
     }
 }
