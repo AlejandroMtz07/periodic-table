@@ -5,16 +5,14 @@ import com.ale.periodic_table.exceptions.ElementNotFoundException;
 import com.ale.periodic_table.exceptions.GroupNotFoundException;
 import com.ale.periodic_table.services.ElementsService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/elements")
+@CrossOrigin("http://192.168.0.5:5500")
 //TODO Add cross origin
 public class ElementController {
 
