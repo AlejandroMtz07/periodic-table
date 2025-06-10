@@ -18,13 +18,13 @@ import java.util.Optional;
 //TODO Add cross origin
 public class ElementController {
 
+    //Constructor injection
     final private ElementsService service;
-
     public ElementController(ElementsService service) {
         this.service = service;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Element>> list() {
         return ResponseEntity.ok(service.findAll());
     }

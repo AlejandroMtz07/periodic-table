@@ -18,12 +18,13 @@ import java.util.Optional;
 @RequestMapping("/compounds")
 public class CompoundController {
 
+    //Constructor injection
     final private CompoundsService service;
     public CompoundController(CompoundsService service) {
         this.service = service;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Compound>> listAll() {
         return ResponseEntity.ok(service.findAllCompounds());
     }
