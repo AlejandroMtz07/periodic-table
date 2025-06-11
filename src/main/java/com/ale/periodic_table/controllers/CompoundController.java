@@ -1,6 +1,7 @@
 package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Compound;
+import com.ale.periodic_table.entities.CompoundDTO;
 import com.ale.periodic_table.exceptions.CompoundNotFoundException;
 import com.ale.periodic_table.exceptions.StateNotFoundException;
 import com.ale.periodic_table.exceptions.TypeNotFoundException;
@@ -23,42 +24,44 @@ public class CompoundController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Compound>> listAll() {
-        return ResponseEntity.ok(service.findAllCompounds());
+    public ResponseEntity<List<CompoundDTO>> listAll() {
+        return ResponseEntity.ok(service.findAllCompounds().stream().map(CompoundDTO::new).toList());
     }
+
     @GetMapping("/name/{name}")
-    public ResponseEntity<Compound> getByName(@PathVariable String name) {
+    public ResponseEntity<CompoundDTO> getByName(@PathVariable String name) {
         Optional<Compound> compound = service.findCompoundByName(name);
         if(compound.isEmpty()){
             throw new CompoundNotFoundException();
         }
-        return ResponseEntity.ok(compound.get());
+        return ResponseEntity.ok(new CompoundDTO(compound.get()));
     }
+
     @GetMapping("/formula/{formula}")
-    public ResponseEntity<Compound> getByFormula(@PathVariable String formula) {
+    public ResponseEntity<CompoundDTO> getByFormula(@PathVariable String formula) {
         Optional<Compound> compound = service.getCompoundByFormula(formula);
         if(compound.isEmpty()){
             throw new CompoundNotFoundException();
         }
-        return ResponseEntity.ok(compound.get());
+        return ResponseEntity.ok(new CompoundDTO(compound.get()));
     }
 
     @GetMapping("/type/{type}")
-    public ResponseEntity<List<Compound>> getByType(@PathVariable String type) {
+    public ResponseEntity<List<CompoundDTO>> getByType(@PathVariable String type) {
         List<Compound> compounds = service.getByType(type);
         if(compounds.isEmpty()){
             throw new TypeNotFoundException();
         }
-        return ResponseEntity.ok(compounds);
+        return ResponseEntity.ok(compounds.stream().map(CompoundDTO::new).toList());
     }
 
     @GetMapping("/state/{state}")
-    public ResponseEntity<List<Compound>> getByState(@PathVariable String state) {
+    public ResponseEntity<List<CompoundDTO>> getByState(@PathVariable String state) {
         List<Compound> compounds = service.getCompoundsByState(state);
         if(compounds.isEmpty()){
             throw new StateNotFoundException();
         }
-        return ResponseEntity.ok(compounds);
+        return ResponseEntity.ok(compounds.stream().map(CompoundDTO::new).toList());
     }
 
 }

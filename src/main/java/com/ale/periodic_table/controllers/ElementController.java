@@ -26,9 +26,8 @@ public class ElementController {
     //Returns a new List of ElementsDTO streaming over the list ot Elements
     @GetMapping
     public ResponseEntity<List<ElementDTO>> list() {
-        List<Element> elements = service.findAll();
         return ResponseEntity.status(HttpStatus.OK)
-                .body(elements.stream().map(ElementDTO::new).toList());
+                .body(service.findAll().stream().map(ElementDTO::new).toList());
     }
 
     @GetMapping("/name/{name}")
