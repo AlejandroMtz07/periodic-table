@@ -1,7 +1,6 @@
 package com.ale.periodic_table.repositories;
 
 import com.ale.periodic_table.entities.Element;
-import com.ale.periodic_table.entities.ElementDTO;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
