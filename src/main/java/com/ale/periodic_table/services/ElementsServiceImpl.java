@@ -1,6 +1,7 @@
 package com.ale.periodic_table.services;
 
 import com.ale.periodic_table.entities.Element;
+import com.ale.periodic_table.entities.ElementDTO;
 import com.ale.periodic_table.repositories.ElementsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

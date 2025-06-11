@@ -1,6 +1,7 @@
 package com.ale.periodic_table.controllers;
 
 import com.ale.periodic_table.entities.Element;
+import com.ale.periodic_table.entities.ElementDTO;
 import com.ale.periodic_table.exceptions.ElementNotFoundException;
 import com.ale.periodic_table.exceptions.GroupNotFoundException;
 import com.ale.periodic_table.services.ElementsService;
@@ -37,12 +38,12 @@ public class ElementController {
     }
 
     @GetMapping("/symbol/{symbol}")
-    public ResponseEntity<Element> getBySymbol(@PathVariable String symbol) {
+    public ResponseEntity<ElementDTO> getBySymbol(@PathVariable String symbol) {
         Optional<Element> element = service.findBySymbol(symbol);
         if (element.isEmpty()) {
             throw new ElementNotFoundException();
         }
-        return ResponseEntity.ok(element.orElseThrow());
+        return ResponseEntity.ok(new ElementDTO(element.orElseThrow()));
     }
 
     @GetMapping("/atomic/number/{number}")
