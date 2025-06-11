@@ -48,10 +48,9 @@ Elementos
 ## Ejemplo de respuesta.
 ```json
 {
-  "id":1,
+  "atomicnumber":1,
   "name":"Hidrogen",
   "symbol":"H",
-  "atomicnumber":1,
   "atomicmass":1.0079,
   "group":"1A",
   "description":"Most abundant chemical element"
