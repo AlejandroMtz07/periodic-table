@@ -20,7 +20,7 @@ public class CompoundsServiceImpl implements CompoundsService {
     @Override
     @Transactional(readOnly = true)
     public List<Compound> findAllCompounds() {
-        return (List<Compound>) repository.findAll();
+        return repository.findAllByOrderByMolecularmassAsc();
     }
 
     @Override

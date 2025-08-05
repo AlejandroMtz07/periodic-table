@@ -2,14 +2,18 @@ package com.ale.periodic_table.repositories;
 
 import com.ale.periodic_table.entities.Element;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
 
 public interface ElementsRepository extends CrudRepository<Element, Integer> {
 
     //This interface implements Query Methods which translate a method name
     //by convention into a SQL query
+
+    List<Element> findAllByOrderByAtomicnumberAsc();
 
     Optional<Element> findByName(String name);
 

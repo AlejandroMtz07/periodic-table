@@ -18,7 +18,7 @@ public class ElementsServiceImpl implements ElementsService{
     @Transactional(readOnly = true)
     @Override
     public List<Element> findAll() {
-        return (List<Element>) repository.findAll();
+        return repository.findAllByOrderByAtomicnumberAsc();
     }
 
     @Transactional(readOnly = true)

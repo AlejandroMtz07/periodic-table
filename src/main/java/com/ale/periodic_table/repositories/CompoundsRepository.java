@@ -11,6 +11,9 @@ public interface CompoundsRepository extends CrudRepository<Compound,Integer> {
     //This interface implements Query Methods which translate a method name
     //by convention into a SQL query
 
+    //Get all the compound ordered by his atomic mass
+    List<Compound> findAllByOrderByMolecularmassAsc();
+
     //Get a compound by his name
     Optional<Compound> findByName(String name);
 
